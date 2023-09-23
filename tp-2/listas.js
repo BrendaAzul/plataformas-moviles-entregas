@@ -193,6 +193,6 @@ console.log("filtrarSoloTruthy(): ", filtrarSoloTruthy(["Hola", "", null, 1, 0, 
  */
 function enumerarLista(listaDePalabras) {
     let x=listaDePalabras.legth;
-    let oracion=listaDePalabras.slice(0,-1).join(",")+`y ${listaDePalabras[n-1]}.`;
+    let oracion=listaDePalabras.slice(0,-1).join(",")+`y ${listaDePalabras[x-1]}.`;
 }
 console.log("enumerarLista(): ", enumerarLista(["Han", "Leia", "Luke", "Yoda"]))
