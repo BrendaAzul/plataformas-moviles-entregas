@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fábrica de Helados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #FF6347;
+        }
+
+        /* Estilos CSS para el encabezado y la barra de navegación */
+        header {
+            background-color: #FF6347;
+            padding: 20px;
+            color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        h2 {
+            color: #FF6347;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* Estilos CSS para los formularios */
+        form {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        button[type="submit"] {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #FF4500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fábrica de Helados</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sabores">Sabores</a></li>
+                <li><a href="#sobre">Sobre Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#pedidos">Pedidos por Mayor</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h2>Bienvenido a la Fábrica de Helados</h2>
+    </section>
+
+    <section id="sabores">
+        <h2>Lista de Sabores</h2>
+        <ul id="listaSabores">
+            <!-- Los sabores se cargarán aquí mediante JavaScript -->
+        </ul>
+    </section>
+
+    <section id="sobre">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos una fábrica de helados comprometida con la calidad y el sabor. Fundada en 1980, hemos estado sirviendo helados deliciosos durante décadas.</p>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Información de contacto:</p>
+        <p>Dirección: 123 Calle de los Helados</p>
+        <p>Teléfono: (123) 456-7890</p>
+        <p>Email: info@fabricadehelados.com</p>
+        <form id="formularioContacto">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea><br><br>
+            
+            <button type="submit">Enviar Mensaje</button>
+        </form>
+    </section>
+
+    <section id="pedidos">
+        <h2>Pedidos por Mayor</h2>
+        <form id="formularioPedidos">
+            <label for="local">Nombre del Local:</label>
+            <input type="text" id="local" name="local" required><br><br>
+            
+            <label for="cantidadMinima">Cantidad Mínima:</label>
+            <input type="number" id="cantidadMinima" name="cantidadMinima" required><br><br>
+            
+            <button type="submit">Enviar Pedido por Mayor</button>
+        </form>
+        <p id="pedidoEnviado" style="display:none;">¡Pedido por Mayor enviado con éxito!</p>
+    </section>
+
+    <footer>
+        <!-- Pie de página aquí -->
+    </footer>
+
+    <script>
+        // JavaScript para cargar la lista de sabores de manera dinámica
+        const listaSabores = document.getElementById('listaSabores');
+        const sabores = ['Chocolate', 'Vainilla', 'Fresa', 'Mango', 'Frutos del Bosque']; // Puedes agregar más sabores aquí
+        
+        sabores.forEach(sabor => {
+            const listItem = document.createElement('li');
+            listItem.textContent = sabor;
+            listaSabores.appendChild(listItem);
+        });
+
+        // JavaScript para el formulario de contacto
+        document.getElementById('formularioContacto').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            // Aquí puedes agregar la lógica para enviar el mensaje de contacto a través de un servidor
+            // Por simplicidad, este ejemplo solo muestra un mensaje en la página
+            const mensajeEnviado = document.createElement('p');
+            mensajeEnviado.textContent = 'Mensaje enviado con éxito.';
+            document.getElementById('formularioContacto').appendChild(mensajeEnviado);
+        });
+
+        // JavaScript para el formulario de pedidos por mayor
+        document.getElementById('formularioPedidos').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const local = document.getElementById('local').value;
+            const cantidadMinima = document.getElementById('cantidadMinima').value;
+
+            // Aquí puedes agregar la lógica para manejar el pedido por mayor, como enviarlo a través de una solicitud AJAX
+            // Por simplicidad, este ejemplo solo muestra un mensaje en la página
+            const pedidoEnviado = document.getElementById('pedidoEnviado');
+            pedidoEnviado.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
